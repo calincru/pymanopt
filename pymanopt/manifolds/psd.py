@@ -76,7 +76,7 @@ class PositiveDefinite(Manifold):
                 multisym(multiprod(multiprod(u, multisym(egrad)), x)))
 
     def retr(self, X, G):
-        return self.exp(X, G)
+        return multisym(X + G + 0.5 * G @ np.linalg.solve(X, G))
 
     def norm(self, x, u):
         # This implementation is as fast as np.linalg.solve_triangular and is
